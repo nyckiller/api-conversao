@@ -1,0 +1,35 @@
+# Configuração do Deploy
+apiVersion: apps/v1
+kind: Deployment  
+metadata: 
+  name: conversao
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: conversao
+  template: 
+    metadata:
+      labels: 
+        app: conversao
+    spec: 
+      containers: 
+        - name: conversao
+          image: nycollasalmeida/bootcampkubedev:v1
+          ports:
+          - containerPort: 8080
+
+---
+# Configuração do Service
+apiVersion: v1
+kind: Service  
+metadata: 
+  name: servconversao
+spec: 
+  selector: 
+    app: servconversao
+  ports: 
+    - port: 8080
+      targetPort: 5000
+      nodePort: 30000
+  type: NodePort

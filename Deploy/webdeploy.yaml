@@ -27,7 +27,7 @@ metadata:
   name: servconversao
 spec: 
   selector: 
-    app: servconversao
+    app: conversao
   ports: 
     - port: 8080
       nodePort: 30000
